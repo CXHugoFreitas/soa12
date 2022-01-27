@@ -23,7 +23,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 
@@ -172,6 +171,7 @@ import { AioCourseCardComponent } from './users/aios/aioCourseCard/aioCourseCard
 import { AioEpaCardComponent } from './users/aios/aioEpaCard/aioEpaCard.component';
 import { AioEpaDetailsComponent } from './users/aios/aioEpaDetails/aioEpaDetails.component';
 import { CareerComponent } from './users/career/career.component';
+import { NavComponent } from './nav-menu/nav.component';
 
 
 
@@ -182,7 +182,7 @@ export function tokenGet() { return localStorage.getItem('token'); }
       AppComponent,
       HomeComponent,
       AboutComponent,
-      NavMenuComponent,
+      NavComponent,
       LoginComponent,
       ChangePwdComponent,
       MyLineChartComponent,

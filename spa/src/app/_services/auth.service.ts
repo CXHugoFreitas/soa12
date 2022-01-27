@@ -67,6 +67,10 @@ loggedIn() {
     return !this.jwtHelper.isTokenExpired(token);
 }
 
+logOut(){
+  localStorage.removeItem('token');
+}
+
 updatePassword(model: any) { return this.http.put<boolean>(this.baseUrl + 'account/changePassword/' + model.password, model); }
 
 
