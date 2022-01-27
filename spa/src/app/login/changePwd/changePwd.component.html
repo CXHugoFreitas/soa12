@@ -1,0 +1,77 @@
+
+
+<form #PWDForm="ngForm">
+  <div class="card">
+   
+    <div class="card-body"  style="background-color: beige;">
+     
+      <div class="row">
+        <div class="col-sm-4">
+          <h4><span class="badge badge-secondary">UserName</span></h4>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-8"><input class="form-control mr-sm-2" name="UserName" placeholder="Name" [(ngModel)]="model.UserName" required /></div>
+            <div class="col-sm-4">
+             </div>
+          </div>
+         </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h4><span class="badge badge-secondary">Password</span></h4>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-8">
+              <input id="password-field" 
+              type="password" 
+              class="form-control"
+              name="mypass" 
+              [(ngModel)]="model.password" #passwordInput>
+              <input type="checkbox" (click)="Reveal()"> 
+              <span class="badge badge-secondary ml-2">Show Password</span>
+            </div>
+             <div class="col-sm-4"><button class="btn btn-primary btn-xxs" (click)="checkLogin()">Check</button>  </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5"  *ngIf="!isLoggedIn()">
+          <h4><span class="badge badge-warning">Credentials are wrong ...</span></h4>
+      </div>
+  
+      <div class="row mt-5"  *ngIf="isLoggedIn()">
+        <div class="col-sm-4">
+          <h4><span class="badge badge-secondary">New password</span></h4>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-8"><input class="form-control mr-sm-2"  type="password"  name="npw1" [(ngModel)]="npw1"/></div>
+            <div class="col-sm-4">
+             </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-2"  *ngIf="isLoggedIn()">
+        <div class="col-sm-4">
+          <h4><span class="badge badge-secondary">Again</span></h4>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-8"><input class="form-control mr-sm-2"  name="npw2" [(ngModel)]="npw2" type="password" /></div>
+            <div class="col-sm-4">
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer"  *ngIf="isLoggedIn()">
+      <button type="button" 
+      [disabled]="!PWDForm.valid" 
+      (click)="changePassword()"
+      class="btn btn-success ml-2">Change</button>
+    </div>
+  </div>
+  </form>
+  

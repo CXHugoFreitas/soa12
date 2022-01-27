@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card header">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>
+          <span class="badge badge-secondary mr-2"> {{Title | titlecase}} </span>
+        </h3>
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+  </div>
+  <div class="card body">
+    <div *ngFor="let item of listOfCards" class="mb-1">
+      <app-aioEpaCard [card]="item"></app-aioEpaCard>
+    </div>
+  </div>
+  <div class="card footer"></div>
+</div>

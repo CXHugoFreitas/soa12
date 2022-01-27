@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row">
+    <h1>{{ user.UserName | titlecase }}'s Profile</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img
+          class="card-img-top img-thumbnail"
+          src="{{ user.photoUrl }}"
+          alt="{{ user.knownAs }}"
+        />
+        <div class="card-body">
+          <div>
+             <h6><span class="badge badge-secondary">Last active: </span></h6>
+             <p>{{ user.lastActive | timeago:live }}</p>
+          </div>
+          <div>
+            <h6><span class="badge badge-secondary">Signed on since: </span></h6>
+            <p>{{ user.created | date: 'mediumDate' }}</p>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-sm-6"><button class="btn btn-warning w-100" (click)="deleteUser()">
+                Remove
+              </button></div>
+              <div class="col-sm-6"><button class="btn btn-success w-100" (click)="saveUserDetails()">
+                Save
+              </button></div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          
+          <tab heading="Details">
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Name:</span></h6>
+              </div>
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-sm-6"><input type="text" class="form-control" name="name"  [(ngModel)]="user.UserName"/></div>
+                  <div class="col-sm-6"></div>
+                </div>
+                
+                </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Role:</span></h6>
+              </div>
+              <div class="col-sm-10">
+              <select [(ngModel)]="user.role"
+              name="select3"
+              class="form-control">
+        <option *ngFor="let oop of OptionRoles">{{ oop.description }}</option>
+      </select>
+            </div></div>
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Country:</span></h6>
+              </div>
+              <div class="col-sm-10">
+              <select [(ngModel)]="user.country" (change)="getHospitalsForThisCountry()"
+              name="select3"
+              class="form-control">
+        <option *ngFor="let oop of OptionCountries" [value]=oop.value>{{ oop.description }}</option>
+      </select>
+            </div></div>
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Active hospital:</span></h6>
+              </div>
+              <div class="col-sm-10">
+              <select [(ngModel)]="user.hospital_id"
+              name="select3"
+              class="form-control">
+        <option *ngFor="let oop of OptionHospitalsInCountry" [value]=oop.value>{{ oop.description }}</option>
+      </select>
+            </div></div>
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Email:</span></h6>
+              </div>
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-sm-6"><input type="text" class="form-control" name="mobile"  [(ngModel)]="user.email"/></div>
+                  <div class="col-sm-6"></div>
+                </div>
+                
+                </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-2">
+                <h6><span class="badge badge-secondary">Mobile:</span></h6>
+              </div>
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-sm-6"><input type="text" class="form-control" name="mobile"  [(ngModel)]="user.mobile"/>
+                  </div>
+                  <div class="col-sm-6"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-2"><h6><span class="badge badge-secondary">Active:</span></h6></div>
+              <div class="col-sm-10"><ui-switch [(ngModel)]="user.active" name="testactive" ></ui-switch></div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-2"><h6><span class="badge badge-secondary">LTK:</span></h6></div>
+              <div class="col-sm-10"><ui-switch [(ngModel)]="user.ltk" name="testactive"></ui-switch></div>
+            </div>
+          </tab>
+          <tab heading="Hospitals">
+            <div class="row">
+              <div class="col-sm-12">
+                <h6>
+                  <span class="badge badge-info"
+                    >Hospitals where
+                    {{ user.UserName | titlecase }} worked</span
+                  >
+                </h6>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Upload picture">
+            <app-photo-editor [userId]="user.Id" [refId]="0" [hospitalId]="0" (getMemberPhotoChange)="updatePhoto($event)"></app-photo-editor>
+          </tab>
+          <tab heading="Courses"> </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

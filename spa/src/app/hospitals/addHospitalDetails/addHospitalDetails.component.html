@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6"><h5><span class="badge badge-secondary">Record number:</span></h5></div>
+          <div class="col-sm-6">{{hospital.HospitalNo}}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6"><h5><span class="badge badge-secondary">Hospital Name:</span></h5></div>
+          <div class="col-sm-6"><input type="text" name="name" [(ngModel)]="hospital.hospitalName"></div>
+        </div>
+       
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6"> <div class="card">
+            <img class="card-img-top img-thumbnail" src="{{ hospital.ImageUrl }}" alt="test" width="250" height="350" />
+          </div></div>
+          <div class="col-sm-6"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12"> <app-photo-editor [hospitalId]="hospital.HospitalNo" 
+            [userId]="0" 
+            [refId]="0" 
+            (getMemberPhotoChange)="updatePhoto($event)"></app-photo-editor></div>
+         </div>
+
+       
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button (click)="close()" class="btn btn-primary">Close</button>
+  </div>
+</div>

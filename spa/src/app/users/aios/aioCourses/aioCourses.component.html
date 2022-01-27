@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card header">
+    <div class="row"  *ngIf="showList()">
+      <div class="col-sm-6">
+        <h4><span class="badge badge-secondary mr-2"> {{Title}} </span></h4>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-secondary float-right" 
+        (click)="addCourse()" 
+        *ngIf="hideChef()"
+        routerLinkActive="router-link-active"> Add
+          Course</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card body mt-2" *ngIf="showList()">
+    <div *ngFor="let item of listOfCourses">
+      <app-aioCourseCard [course]="item" (updateIdToParent)=showDetails($event)></app-aioCourseCard>
+    </div>
+  </div>
+
+  <div class="card body mt-2" *ngIf="!showList()">
+    <app-aioCourseDetails [course]="itemDetails" (signalToParent)=backFromDetails($event) ></app-aioCourseDetails>
+  </div>
+
+</div>

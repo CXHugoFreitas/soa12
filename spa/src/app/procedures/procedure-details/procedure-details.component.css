@@ -1,0 +1,8 @@
+ /* .nav-link li.active>.nav-link {
+    border-bottom: 5px solid #F4C127;
+}
+ */
+.nav-item .nav-link:active {
+    /* background-color: yellow; */
+    border-bottom: 5px solid #F4C127;
+  }

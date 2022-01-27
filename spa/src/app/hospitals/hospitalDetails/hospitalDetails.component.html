@@ -1,0 +1,62 @@
+<div class="card ml-5">
+  <div class="card-header" style="background-color: blanchedalmond;">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex justify-content-between">
+            <div class="p-2"><h3><span>{{hospital.hospitalName}}</span></h3></div>
+            <div class="p-2"><button class="btn btn-danger btn-sm"(click)="deleteHospital()">Delete</button></div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+  </div>
+  <div class="card-body">
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="d-flex flex-row">
+        <div class="p-2"> <select 
+          [(ngModel)]="selectedChapter" 
+          name="ch" 
+          class="form-control" 
+          (change)="selectChapter()">
+            <option *ngFor="let item of listOfChapters">{{item.description}}</option>
+          </select></div>
+        <div class="p-2">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" (click)="Cancel()">Cancel</button>
+            <button type="button" class="btn btn-secondary" (click)="Go()">Go</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" *ngIf="showDetails()">
+    <div class="card-header"><h2><span class="badge badge-secondary">General details:{{hospital.hospitalName}}</span></h2></div>
+    <div class="card-body">
+    <app-hospitalGeneral></app-hospitalGeneral>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+  <div class="card" *ngIf="showEmployees()">
+    <div class="card-header"><h2><span class="badge badge-secondary">Manage employees:{{hospital.hospitalName}}</span></h2></div>
+    <div class="card-body">
+      <app-hospitalEmployees></app-hospitalEmployees>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+  <div class="card" *ngIf="showRefPhys()">
+    <div class="card-header"><h2><span class="badge badge-secondary">Referring physicians:{{hospital.hospitalName}}</span></h2></div>
+    <div class="card-body">
+      <app-hospitalRefPhys></app-hospitalRefPhys>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+  </div>
+  <div class="card-footer">
+
+
+  </div>
+
+</div>

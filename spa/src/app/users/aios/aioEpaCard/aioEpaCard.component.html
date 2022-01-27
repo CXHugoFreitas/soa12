@@ -1,0 +1,84 @@
+<div class="card" style="background-color: blanchedalmond">
+  
+  <div class="card-body">
+    <div class="row">
+      <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="p-2 bd-highlight"><img src="{{card.image}}" alt="{{card.name}}" class="card-img-epa"></div>
+        <div class="p-2 bd-highlight">
+          <div class="d-flex flex-row bd-highlight">
+            <div class="bd-highlight ml-5">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Name:</span></h5>
+                </div>
+                <div class="col-sm-6"><input type="text" name="n" [(ngModel)]="card.name" class="form-control"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Category:</span></h5>
+                </div>
+                <div class="col-sm-6"><input type="text" name="s" [(ngModel)]="card.name" class="form-control"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Year:</span></h5>
+                </div>
+                <div class="col-sm-6"><input type="text" name="t" [(ngModel)]="card.name" class="form-control"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Finished:</span></h5>
+                </div>
+                <div class="col-sm-6">
+                  <ui-switch [(ngModel)]="card.finished" name="testactive"></ui-switch>
+                </div>
+              </div>
+            </div>
+            <div class="bd-highlight">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Date started:</span></h5>
+                </div>
+                <div class="col-sm-6">
+                  <p class="input-group">
+                    <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker
+                      [(ngModel)]="card.date_started" [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" name="datums" />
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Date finished:</span></h5>
+                </div>
+                <div class="col-sm-6">
+                  <p class="input-group">
+                    <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker
+                      [(ngModel)]="card.date_finished" [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" name="datumf" />
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5><span class="badge bg-light text-dark">Grade:</span></h5>
+                </div>
+                <div class="col-sm-6"><input type="text" name="x" [(ngModel)]="card.name" class="form-control"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>

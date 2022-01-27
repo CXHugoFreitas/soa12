@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-sm-6">
+        
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-secondary float-right" 
+        (click)="removeCourse()" 
+        routerLinkActive="router-link-active"> Remove</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h5><span class="badge bg-light text-dark">Name:</span></h5>
+        </div>
+        <div class="col-sm-6"><input type="text" name="n" [(ngModel)]="course.description" class="form-control"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-danger" (click)="Cancel()">Cancel</button>
+      <button type="button" class="btn btn-secondary"(click)="updateCourse()" >Update</button>
+    </div>
+    
+    
+    </div>
+</div>

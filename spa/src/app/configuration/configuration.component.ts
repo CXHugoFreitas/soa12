@@ -1,0 +1,53 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
+import { UserService } from '../_services/user.service';
+import { AlertifyService } from '../_services/alertify.service';
+
+@Component({
+    selector: 'app-configuration',
+    templateUrl: './configuration.component.html',
+    styleUrls: ['./configuration.component.scss']
+})
+
+export class ConfigurationComponent implements OnInit {
+
+    hospitalPhoto = '';
+    employeePhoto = '';
+    refPhysPhoto = '';
+    usersPhoto = '';
+    refOperativeReport = '';
+    hospital = 0;
+    employee = 0;
+    ref = 0;
+
+    private sub: any;
+    id: number;
+
+    constructor(
+        private router:Router,
+        private alertify: AlertifyService,
+        private auth: AuthService,
+        private user: UserService) { }
+
+    ngOnInit(): void {
+        this.hospitalPhoto = 'https://res.cloudinary.com/marcelcloud/image/upload/v1567770782/Hospitals/kfafh.jpg';
+        this.usersPhoto = 'https://res.cloudinary.com/marcelcloud/image/upload/v1560755000/rf9mgoftqqsdyndoaxqv.jpg';
+        this.employeePhoto = 'https://res.cloudinary.com/marcelcloud/image/upload/v1569914898/employees/nurse-employee.jpg';
+        this.refPhysPhoto = 'https://res.cloudinary.com/marcelcloud/image/upload/v1568664430/mdszyrzqtjpeiq9svokh.jpg';
+        this.refOperativeReport = 'https://res.cloudinary.com/marcelcloud/image/upload/v1569919553/general/report.jpg';
+    }
+    editHospital() {
+        this.user.getUser(this.auth.decodedToken.nameid).subscribe((next) => {
+            const currentUser = next;
+            this.router.navigate(['/editHospital',currentUser.hospital_id]);
+       });
+    }
+
+    adminLoggedIn(){ if(this.auth.decodedToken.role === 'admin'){return true;}else{return false;} }
+    manageUsers(){this.alertify.message('managing user')}
+
+    }
+
+
+
